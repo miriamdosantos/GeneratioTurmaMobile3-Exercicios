@@ -2,12 +2,13 @@
 
 
 class Cliente (private var nome: String, private var telefone: String) {
-   private val listaDeCompras = mutableListOf<String>()
-    private var codigo = 0
+
+    private val listaDeCompras = mutableListOf<String>()
+    private var id = 0
 
     constructor(nome: String, telefone: String, codigo: Int)
             : this(nome, telefone) {
-        this.codigo = codigo
+        this.id = codigo
     }
 
     init {
@@ -16,33 +17,35 @@ class Cliente (private var nome: String, private var telefone: String) {
         }
     }
 
-    fun adicionarItem(item: String) {
+    fun adicionarItem() {
 
+            while (true) {
+                println("Digite produto que deseja inseiris")
+                val produto = readln()
+                if (produto != "") {
+                    listaDeCompras.add(produto)
+                } else {
+                    println("item nao pode ser vazio")
 
-
-            if (item != "") {
-               listaDeCompras.add(item)
-            }else{
-                println("item nao pode ser vazio")
-
+                }
+                break
             }
-
 
     }
 
     fun removerItem() {
-        while (true) {
+
             println("Digite item que deseja remover:")
             var itemRemove = readln()
             if (listaDeCompras.contains(itemRemove)) {
                 listaDeCompras.remove(itemRemove)
             } else {
                 println("$itemRemove, nao se encontra na lista")
-                break
+
             }
         }
 
-    }
+
 
     fun imprimiItens() {
         println("Seu estoque contém:")
